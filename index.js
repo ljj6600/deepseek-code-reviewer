@@ -6,6 +6,7 @@
  * @version 1.0.0
  */
 
+const fs = require('fs');
 const { CodeReviewer, reviewCode, createCodeReviewer } = require('./review');
 const { 
   getConfig, 
@@ -51,6 +52,7 @@ async function main() {
 
 Usage:
   node index.js review "<code>" [language]
+  node index.js review-file <filepath> [language]
   node index.js set-key <api-key>
   node index.js config
   node index.js reset
@@ -58,7 +60,8 @@ Usage:
 Examples:
   node index.js review "function hello() { console.log('Hello'); }" javascript
   node index.js review "def hello(): print('Hello')" python
-  node index.js set-key sk-xxxxxxxxxxxxxxxx
+  node index.js review-file ./src/app.js javascript
+  node index.js set-key sk-xxx...xxxx
   node index.js config
 `);
     return;
@@ -78,6 +81,38 @@ Examples:
       }
       
       console.log('🔍 Reviewing code...\n');
+      
+      const result = await reviewCode(code, language);
+      
+      if (result.success && result.report) {
+        console.log(result.report);
+        if (result.usage) {
+          console.log(`\n📊 Tokens used: ${result.usage.total_tokens} (prompt: ${result.usage.prompt_tokens}, completion: ${result.usage.completion_tokens})`);
+        }
+      } else {
+        console.error('❌ Error:', result.error);
+        process.exit(1);
+      }
+      break;
+    }
+    
+    case 'review-file': {
+      const filePath = args[1] || '';
+      const language = args[2] || '';
+      
+      if (!filePath) {
+        console.error('❌ Please provide a file path');
+        console.error('Usage: node index.js review-file <filepath> [language]');
+        process.exit(1);
+      }
+      
+      if (!fs.existsSync(filePath)) {
+        console.error(`❌ File not found: ${filePath}`);
+        process.exit(1);
+      }
+      
+      const code = fs.readFileSync(filePath, 'utf-8');
+      console.log(`📄 Reviewing file: ${filePath}\n`);
       
       const result = await reviewCode(code, language);
       
