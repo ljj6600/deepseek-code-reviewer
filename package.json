@@ -1,7 +1,7 @@
 {
   "name": "deepseek-code-reviewer",
   "version": "1.0.0",
-  "description": "DeepSeek-powered code review plugin for Claude Code / Cline",
+  "description": "DeepSeek-powered AI code review plugin for Claude Code / Cline. Analyze code quality, security, and performance with zero dependencies.",
   "main": "index.js",
   "scripts": {
     "review": "node index.js review",
