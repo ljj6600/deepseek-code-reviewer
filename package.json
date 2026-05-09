@@ -1,0 +1,22 @@
+{
+  "name": "deepseek-code-reviewer",
+  "version": "1.0.0",
+  "description": "DeepSeek-powered code review plugin for Claude Code / Cline",
+  "main": "index.js",
+  "scripts": {
+    "review": "node index.js review",
+    "test": "node index.js"
+  },
+  "keywords": [
+    "deepseek",
+    "code-review",
+    "claude",
+    "cline",
+    "ai"
+  ],
+  "author": "ljj6600",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
