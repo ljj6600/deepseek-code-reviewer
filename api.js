@@ -2,7 +2,6 @@
  * DeepSeek API 客户端
  */
 const https = require('https');
-const http = require('http');
 
 /**
  * DeepSeek API 客户端类
@@ -11,7 +10,6 @@ class DeepSeekClient {
   constructor(config = {}) {
     this.apiKey = config.apiKey || process.env.DEEPSEEK_API_KEY || '';
     this.model = config.model || 'deepseek-chat';
-    this.baseURL = 'https://api.deepseek.com';
   }
 
   /**
