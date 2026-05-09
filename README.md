@@ -10,8 +10,6 @@
 
 🤖 **DeepSeek 驱动的代码审查插件** — 集成到 Claude Code / Cline / Cursor 中，对代码进行多维度 AI 智能审查。
 
-适用于 **Xiaomi MiMo 百亿 Token 激励计划**申请材料！
-
 ## ✨ 功能特性
 
 - 🔍 **智能审查** — 使用 DeepSeek AI 扫描代码中的 Bug、安全漏洞、性能问题
@@ -169,4 +167,4 @@ MIT License
 
 ## 👤 作者
 
-[ljj6600](https://github.com/ljj6600) — 申请 Xiaomi MiMo 百亿 Token 计划
+[ljj6600](https://github.com/ljj6600)
